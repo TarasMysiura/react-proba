@@ -11,13 +11,17 @@ export const TitleH2 = styled.h2`
   justify-content: center;
   margin-bottom: 20px;
 `;
+
 export const Ul = styled.ul`
-  width: 300px;
+  width: 400px;
   /* list-style: none; */
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin: 0;
-  /* margin-left: 30px; */
+  border-radius: 6px;
+  padding: 20px;
+background-color: white;
+  border: 1px solid black;
 `;
 

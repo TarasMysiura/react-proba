@@ -23,13 +23,13 @@ export const Form = styled.form`
   flex-direction: column;
   gap: 20px;
   justify-content: baseline;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 `;
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 `;
 
 export const Span = styled.span`
@@ -45,11 +45,12 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   width: 120px;
-  height: 20px;
+  height: 24px;
   font-family: 'Roboto', sans-serif;
   color: #111111;
   font-size: 16px;
   font-weight: 700;
+  cursor: pointer;
 `;
 
 // export const Form = styled.form``;

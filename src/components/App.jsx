@@ -1,22 +1,44 @@
-import { Component } from "react";
-import { PhonebookForm } from "./PhonebookForm/PhonebookForm";
-import { Contacts } from "./Contacts/Contacts";
-
+import { Component } from 'react';
+import { PhonebookForm } from './PhonebookForm/PhonebookForm';
+import { Contacts } from './Contacts/Contacts';
+import { nanoid } from 'nanoid';
 export class App extends Component {
-state = {
-  contacts: [
-    { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-    { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-    { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-    { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-  ],
-  filter: '',
-  name: '',
-  number: '',
-};
+  // model.id = nanoid()
 
-  render() {
-    console.log(this.state.contacts);
+  state = {
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    filter: '',
+  };
+
+  onRemoveContact = contactId => {
+    // console.log(contactId);
+
+    this.setState({
+      contacts: this.state.contacts.filter(contact => contact.id !== contactId),
+    });
+  };
+
+  onAddContact = contactData => {
+    const finalContact = {
+      id: nanoid(5),
+      ...contactData,
+      
+    };
+    this.setState({
+          contacts: [...this.state.contacts, finalContact],
+    });
+    ;
+  };
+
+  // 
+
+  render() {console.log(this.state);
+    // console.log(this.state.contacts);
     return (
       <div
         style={{
@@ -32,12 +54,16 @@ state = {
       >
         <PhonebookForm
           title="Phonebook"
-          // onAddContact={this.onAddContact}
+          onAddContact={this.onAddContact}
           // options={options}
           // onLeaveFeedback={this.onLeaveFeedback}
         ></PhonebookForm>
-        <Contacts title="Contacts" contacts={this.state.contacts} />
+        <Contacts
+          title="Contacts"
+          contacts={this.state.contacts}
+          onRemoveContact={this.onRemoveContact}
+        />
       </div>
     );
   }
-};
+}
