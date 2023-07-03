@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-proba/static/css/main.4d29821e.css",
-    "main.js": "/react-proba/static/js/main.d9ed479f.js",
+    "main.css": "/react-proba/static/css/main.8a3b97c4.css",
+    "main.js": "/react-proba/static/js/main.b828e3d7.js",
     "index.html": "/react-proba/index.html",
-    "main.4d29821e.css.map": "/react-proba/static/css/main.4d29821e.css.map",
-    "main.d9ed479f.js.map": "/react-proba/static/js/main.d9ed479f.js.map"
+    "main.8a3b97c4.css.map": "/react-proba/static/css/main.8a3b97c4.css.map",
+    "main.b828e3d7.js.map": "/react-proba/static/js/main.b828e3d7.js.map"
   },
   "entrypoints": [
-    "static/css/main.4d29821e.css",
-    "static/js/main.d9ed479f.js"
+    "static/css/main.8a3b97c4.css",
+    "static/js/main.b828e3d7.js"
   ]
 }
