@@ -27,9 +27,10 @@ export class PhonebookForm extends Component {
       name: this.state.name,
       number: this.state.number,
     };
-    
+
     this.props.onAddContact(contactData);
 
+    this.setState({ name: '', number: '' });
   };
 
   render() {
@@ -41,13 +42,11 @@ export class PhonebookForm extends Component {
             <Span>Name</Span>
             <Input
               onChange={this.handleInputChange}
-              //   value={this.state.name}
               type="text"
               name="name"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               //   title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               value={this.state.name}
-              //   onChange={onSubmit}
               required
             />
           </Label>

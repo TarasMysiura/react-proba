@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import { PhonebookForm } from './PhonebookForm/PhonebookForm';
-import { Contacts } from './Contacts/Contacts';
+import { ContactList } from './ContactList/ContactList';
 import { nanoid } from 'nanoid';
+import { TitleH2 } from './PhonebookForm/PhonebookForm.styled';
 export class App extends Component {
   // model.id = nanoid()
 
@@ -24,28 +25,57 @@ export class App extends Component {
   };
 
   onAddContact = contactData => {
+    const isInContacts = this.state.contacts.some(
+      ({ name }) => name.toLowerCase() === contactData.name.toLowerCase()
+    );
+
+    if (isInContacts) {
+      alert(`${contactData.name} is already in contacts`);
+      return;
+    }
+
     const finalContact = {
       id: nanoid(5),
       ...contactData,
-      
     };
+
     this.setState({
-          contacts: [...this.state.contacts, finalContact],
+      contacts: [...this.state.contacts, finalContact],
     });
-    ;
   };
 
-  // 
+  onFilterContactList = filterContact => {
+    this.setState({
+      contacts: [filterContact],
+    });
+  };
 
-  render() {console.log(this.state);
-    // console.log(this.state.contacts);
+  onChangeFilter = event => {
+    this.setState({ filter: event.target.value });
+    console.log(this.state);
+  };
+
+  onFilteredContacts = () => {
+    const { filter, contacts } = this.state;
+    const normalFilter = filter.toLowerCase();
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalFilter)
+    );
+  };
+
+  //
+
+  render() {
+    const filteredContacts = this.onFilteredContacts();
+    const { filter } = this.state;
+    // console.log(filteredContacts);
     return (
       <div
         style={{
           height: '100vh',
           display: 'flex',
           flexDirection: 'column',
-          // justifyContent: 'center',
           alignItems: 'center',
           fontSize: 40,
           color: '#010101',
@@ -55,13 +85,14 @@ export class App extends Component {
         <PhonebookForm
           title="Phonebook"
           onAddContact={this.onAddContact}
-          // options={options}
-          // onLeaveFeedback={this.onLeaveFeedback}
         ></PhonebookForm>
-        <Contacts
+        <ContactList
           title="Contacts"
           contacts={this.state.contacts}
           onRemoveContact={this.onRemoveContact}
+          onChangeFilter={this.onChangeFilter}
+          filteredContacts={filteredContacts}
+          filter={filter}
         />
       </div>
     );

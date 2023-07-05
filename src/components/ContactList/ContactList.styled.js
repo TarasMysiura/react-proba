@@ -12,6 +12,7 @@ export const TitleH2 = styled.h2`
   margin-bottom: 20px;
 `;
 
+
 export const Ul = styled.ul`
   width: 400px;
   /* list-style: none; */
